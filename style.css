@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.scene {
+  perspective: 500px;
+  /*perspective-origin: center top; */ /*таким образом можно менять точку обзора на нашу перспективу. Данное значение означает, что точка обзора находиться по центру (по оси X) и сверху (по оси Y) */
+}
+
+.coub {
+  width: 200px;
+  height: 200px;
+  margin: 150px auto;
+
+  /* transform: rotateX(-5deg) rotateY(-30deg); */
+  transform-style: preserve-3d; /*дочерние элементы дива coub, которые мы будем трансформировать будут иметь собственное 3D пространство*/
+
+  animation: coub 5s infinite alternate ease-in-out;
+}
+
+.coub-part {
+  width: 100%;
+  height: 100%;
+
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+  line-height: 200px; /*для отцентровки текста по вертикали*/
+
+  opacity: 0.8;
+  position: absolute;
+}
+
+.coub-part.front {
+  background-color: #12cb22;
+  transform: translateZ(100px);
+}
+
+.coub-part.back {
+  background-color: #12cb22;
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.coub-part.left {
+  background-color: rgb(0, 0, 254);
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.coub-part.right {
+  background-color: rgb(0, 0, 254);
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.coub-part.bottom {
+  background-color: rgb(254, 0, 0);
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.coub-part.top {
+  background-color: rgb(254, 0, 0);
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+@keyframes coub {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  33% {
+    transform: rotateX(-30deg) rotateY(-360deg);
+  }
+  66% {
+    transform: rotateX(-360deg) rotateY(-360deg);
+  }
+  100% {
+    transform: rotateX(-360deg) rotateY(-180deg);
+  }
+}
+
+/* @keyframes coub {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-360deg);
+  }
+} */
